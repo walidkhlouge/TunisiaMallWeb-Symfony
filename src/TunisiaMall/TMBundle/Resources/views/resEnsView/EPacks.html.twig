@@ -1,0 +1,30 @@
+
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+
+{% block content %}
+    <div class="side-body ">
+        {% for i in m %}
+            <form method="POST" action="{{path('validerP',{'id':i.id})}}">
+                <div class="col-md-12 col-md-offset-0">
+                    <div class="card text-xs-center" id="item-{{ i.nom }}">
+                        <center>
+                            <div class="card-block">
+                                <h4 class="card-title">{{i.nom}}</h4>
+                                <p class="card-text">{{i.description}}</p>
+                                <p class="card-text">{{i.prix}}</p>
+                                <select name="valider" >
+                                    {% for d in e %}
+                                        <option  data-tokens = " {{ d.nomEnseigne }}" >{{ d.nomEnseigne }}</option>
+                                    {% endfor %}
+                                </select>
+                                <button type="submit" class="btn btn-info" class="fa fa-plus" >Acheter</button>
+                            </div>
+                        </center> 
+                    </div>
+                </div>
+            </form>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

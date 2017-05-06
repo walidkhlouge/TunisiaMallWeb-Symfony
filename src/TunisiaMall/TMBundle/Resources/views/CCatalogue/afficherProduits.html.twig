@@ -1,0 +1,104 @@
+
+{% extends "TunisiaMallTMBundle::clientView/CIndex.html.twig" %}
+{%block body3 %}
+<section id="s-enseigne" class="s-list">
+                
+                  <h2 class="b-title ct1 text-center">CATALOGUE {{ nomC }} </h2>
+                  <form method="POST" action="">   
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   
+                    <select name="chercher" class="selectpicker" data-live-search="true" onChange="this.form.submit()">
+                                <option disabled selected value> -- Choisir  Produit ? -- </option>
+                        {% for produit in produits2 %}
+                       <option data-tokens = " {{produit.nom}}" >{{produit.nom}}</option>
+  {%endfor %}
+                    </select></br></br></br>  
+                 </form>
+                <h4 class="hidden">Items list</h4>
+          
+                <div class="container">
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tort">
+                            <div class="row items-place">
+                    {% for produit in produits %}
+                                    <!-- taswira debut -->
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
+                                    <article class="item  animated wow" data-wow-duration="0.7s">
+                                        <a href="item-detail.html" class="link-item" data-toggle="modal" data-target="#modal_detailed" data-remote="false"><h4 class="hidden">Blueberries with cream Pancake</h4></a>
+                                        
+                                        <div class="wrap">
+                                          
+                                            <div class="desc">
+                                                <p class="name link-item" >{{ produit.nom }}</p>
+                                                <br><br>
+                                               
+                                                <div class="changes">
+                                                    <div class="media-left media-middle">
+                                                        <div class="input-group counter-badge">
+                                                        
+                                                            <a href="{{ path('client_boutiqueByEns',{'nomEnseigne':produit.nom} ) }}"><button class="btn btn-sm  btn-icon btn-clicked btn--moema ">Consulter Produit</button> </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                                          
+                                </div>
+                                               <!-- taswira fin -->
+                                <div id="item-detail-content1" class="item-detailed-content hidden">
+                                 
+                                    <button type="button" class="overlay-close inner visible-xs" data-dismiss="modal">×</button>
+                                    <form action="http://html.yenisite.ru/best-dessert-eng/index.html">
+                                        <div class="b-title text-center">Blueberries with cream pancake cake</div>
+                                        <div class="item-detail">
+                                            <!-- Swiper -->
+                                            <div class="swiper-container it-gallery">
+                                                <div class="swiper-wrapper"> <!-- taswira el kbiiira -->
+                                                   
+                                                    <div class="it-big swiper-slide">
+                                                    </div>
+                                                 
+                                                </div>
+                                            </div>
+                                                    <!-- taswira sghira-->
+                                           
+
+                                            <div class="clearfix">
+                                                <div class="it-info">
+                                                    <div class="text-list">
+                                                        <div class="name">{{produit.nom}}</div>
+                                                    </div>
+                                                   
+                                                </div>
+                                                
+                                                    <br>
+                                                    <button type="submit" class="btn btn-buy btn-icon btn-clicked btn--moema flaticon-trolley7">Consulter Boutique</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                               
+                                {% endfor %}
+                              
+                                
+                              
+                  
+                           
+                               
+                            
+                              
+                          
+                            </div>
+                            
+                        </div>
+                         </div>
+                </div>
+            </section>
+                                <center>
+                                <div class="navigation">
+                                        {{ knp_pagination_render(produits) }}
+                                </div></center>
+    {% endblock %}

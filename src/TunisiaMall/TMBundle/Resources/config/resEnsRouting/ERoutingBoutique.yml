@@ -1,0 +1,33 @@
+enseigne_enseigne:
+    path:     /enseigne_enseigne
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/EEnseigne:index }
+enseigne_boutique:
+    path:     /boutique
+    defaults: { _controller: "TunisiaMallTMBundle:resEnsController/Boutique:index" }
+    
+boutique_show:
+    path:     /{id}/show
+    defaults: { _controller: "TunisiaMallTMBundle:resEnsController/Boutique:show" }
+
+boutique_new:
+    path:     /newB
+    defaults: { _controller: "TunisiaMallTMBundle:resEnsController/Boutique:new"}
+
+boutique_create:
+    path:     /createB
+    defaults: { _controller: "TunisiaMallTMBundle:resEnsController/Boutique:create" }
+
+
+boutique_edit:
+    path:     /{id}/editB
+    defaults: { _controller: "TunisiaMallTMBundle:resEnsController/Boutique:edit" }
+
+
+boutique_update:
+    path:     /{id}/updateB
+    defaults: { _controller: "TunisiaMallTMBundle:resEnsController/Boutique:update" }
+   
+boutique_delete:
+    path:     /{id}/deleteB
+    defaults: { _controller: "TunisiaMallTMBundle:resEnsController/Boutique:delete" }
+   

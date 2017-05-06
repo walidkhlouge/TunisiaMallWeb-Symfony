@@ -1,0 +1,33 @@
+{% extends "TunisiaMallTMBundle::clientView/CIndex.html.twig" %}
+{%block body50 %}  
+    </div>
+    <footer>
+{{ render(controller('FOSUserBundle:Security:login')) }} 
+    {% block hwi_oauth_content %}
+    {% if app.user ==null %}
+    {% if error is defined and error %}
+        <span>{{ error }}</span>
+    {% endif %}
+    
+    <nav c1lass="socials">
+        <div class="container">
+    {% for owner in hwi_oauth_resource_owners() %}
+     {% if owner|trans({}, 'HWIOAuthBundle')=="facebook" %}
+         <a href="{{ hwi_oauth_login_url(owner) }}" class="icon-soc flaticon-facebook3"></a>
+         {% endif %}
+         
+     {% if owner|trans({}, 'HWIOAuthBundle')=="instagram" %}
+         <a href="{{ hwi_oauth_login_url(owner) }}" class="icon-soc flaticon-instagram19""></a>
+         {% endif %}
+     {% if owner|trans({}, 'HWIOAuthBundle')=="google" %}
+         <a href="{{ hwi_oauth_login_url(owner) }}" class="icon-soc flaticon-google-plus"></a>
+         {% endif %}
+ 
+         
+         
+    {% endfor %}
+     </div>
+    </nav>
+    {%endif %}
+{% endblock hwi_oauth_content %}
+{% endblock body50 %}

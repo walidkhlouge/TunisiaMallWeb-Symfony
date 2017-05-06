@@ -1,0 +1,34 @@
+admin_index:
+    path:     /admin_index
+    defaults: { _controller: TunisiaMallTMBundle:adminController/AIndex:index }
+Gestion:
+    path:     /affich
+    defaults: { _controller: TunisiaMallTMBundle:adminController/User:liste }
+    
+admin_modif:
+    path:     /admin_modif/{login}
+    defaults: { _controller: TunisiaMallTMBundle:adminController/User:modifier }
+admin_activate:
+    path:     /admin_activate/{login}
+    defaults: { _controller: TunisiaMallTMBundle:adminController/User:DebloquerUtilisateur }
+_GraphicPie:
+    path:     /pie
+    defaults: { _controller: TunisiaMallTMBundle:adminController/Statistique:chartPie }
+_Demande:
+    path:     /demande
+    defaults: { _controller: TunisiaMallTMBundle:adminController/User:demande }
+_creepack:
+    path:     /creerpack
+    defaults: { _controller: TunisiaMallTMBundle:adminController/Pack:creerpack }
+ListePack:
+    path:     /Afficher
+    defaults: { _controller: TunisiaMallTMBundle:adminController/Pack:listeP }
+ListeComs:
+    path:     /AfficComs
+    defaults: { _controller: TunisiaMallTMBundle:adminController/Aindex:commentaire }
+GraphicPie2:
+    path:     /pie2
+    defaults: { _controller: TunisiaMallTMBundle:adminController/Statistique:chartPie2 }    
+Somme:
+    path:     /somme
+    defaults: { _controller: TunisiaMallTMBundle:adminController/Aindex:SumP }  

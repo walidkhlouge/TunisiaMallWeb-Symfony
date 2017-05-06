@@ -1,0 +1,4 @@
+admin_produit:
+    path:     /admin_produit
+    defaults: { _controller: TunisiaMallTMBundle:adminController/AProduit:index }
+

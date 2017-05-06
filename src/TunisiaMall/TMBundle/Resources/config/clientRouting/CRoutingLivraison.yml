@@ -1,0 +1,3 @@
+client_livraison:
+    path:     /livraison
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CLivraison:index }

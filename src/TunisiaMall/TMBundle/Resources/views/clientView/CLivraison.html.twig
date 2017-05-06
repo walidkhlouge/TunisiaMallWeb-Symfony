@@ -1,0 +1,65 @@
+                            
+{% extends "TunisiaMallTMBundle::clientView/CIndex.html.twig" %}
+{%block body3 %}  
+<div  id="modal_cart" aria-hidden="true" data-backdrop="true" data-keyboard="true" tabindex="-1">
+        <button type="button" class="overlay-close hidden-xs" data-dismiss="modal">&#215;</button>
+        <div class="modal-content detail-popup" id="cartView-popup">
+{% set total=0 %}            
+          
+                <div class="b-title text-center c-white">Your Cart</div>
+                <div class="wrap-cart-window clearfix">
+                    <div class="cart-items">
+                        <div class="visible-xs ci-thead-mob ci-info"><span class="ct2">Commandes:</span>&nbsp;<span class="ci-length">{{id|length}}</span> <span class="ct2 pl20"></span>&nbsp;
+                        </div>
+                        <table class="table">
+                            <thead class="ci-head hidden-xs">
+                            <tr>
+                                <th class="ci-info pl25" colspan="2"><span class="ct2">Commandes:</span>&nbsp;<span class="ci-length">{{id|length}}</span> <span class="ct2 pl20"></span>&nbsp;
+                                </th>
+                                <th class="text-center">Addresse</th>
+                                <th class="text-center">Prix</th>
+                                <th class="text-center">Date</th>
+                            </tr>
+                            </thead>
+                                 <tbody >
+                                    
+
+                                     {%  if id |length >0 %}
+                                     {% for i in 0..max-1 %}
+                                   
+                            <tr class="ci-item">
+                                <td class="col-sm-1 col-md-1 col-xs-2">
+                                    <div class="media">
+                                        <a class="link-item" href="item-detail.html" data-toggle="modal" data-target="#modal_detailed" data-remote="false"> </a>
+                                    </div>
+                                </td>
+                                <td class="ci-text hidden-xs col-sm-4 col-md-3">
+                                    {{ id[i] }}  
+                                </td>
+                                <td class="col-sm-1 col-md-2 col-xs-7 text-center">
+                                    <a href="item-detail.html" class="ci-text link-item visible-xs" data-toggle="modal" data-target="#modal_detailed" data-remote="false">Pigeons's milk</a>
+                                    {{ addresse[i]}}
+                                    
+                             
+                                </td>
+                                <td class="ci-num hidden-xs col-sm-1 col-md-2 text-center"><strong class="ci-sum-single">{{ prix[i] }}<strong>DT </strong></strong>
+                                </td>
+                                <td class="ci-num hidden-xs col-sm-1 col-md-2 text-center"><strong class="ci-sum-item">{{ date[i]|date('d/m/y') }} </strong>
+                                </td>
+                              
+                            </tr>
+                      
+                            {% endfor %}
+                            {% else  %}
+                            <h1>Vous n'avez aucune commande </h1>
+                            {% endif %}
+                            
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+        </div>
+</div>
+                            <br/>
+                      {%endblock %}

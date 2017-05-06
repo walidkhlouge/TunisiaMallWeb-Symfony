@@ -1,0 +1,7 @@
+{% extends "TunisiaMallTMBundle:clientView:base.html.twig" %}
+{% block container %}
+    <input id="lat" type="hidden" value="{{latitude}}"/>
+    <input id="long" type="hidden" value="{{longitude}}"/>
+ <div id="googleMap" style="width:500px;height:380px;"></div>   
+{% endblock %}
+

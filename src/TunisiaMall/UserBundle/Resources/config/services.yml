@@ -1,0 +1,4 @@
+services:
+#    tunisia_mall_user.example:
+#        class: TunisiaMall\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

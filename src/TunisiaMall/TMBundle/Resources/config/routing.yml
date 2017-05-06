@@ -1,0 +1,76 @@
+
+
+
+
+#----------------------------------------Client
+tunisia_mall_tm_client_index:
+    resource: "@TunisiaMallTMBundle/Resources/config/clientRouting/CRoutingIndex.yml"
+    prefix:   /
+
+tunisia_mall_tm_client_produit:
+    resource: "@TunisiaMallTMBundle/Resources/config/clientRouting/CRoutingProduit.yml"
+    prefix:   /
+tunisia_mall_tm_client_boutique:
+    resource: "@TunisiaMallTMBundle/Resources/config/clientRouting/CRoutingBoutique.yml"
+    prefix:   /
+tunisia_mall_tm_client_enseigne:
+    resource: "@TunisiaMallTMBundle/Resources/config/clientRouting/CRoutingEnseigne.yml"
+    prefix:   /
+tunisia_mall_tm_client_panier:
+    resource: "@TunisiaMallTMBundle/Resources/config/clientRouting/CRoutingPanier.yml"
+    prefix:   /
+tunisia_mall_tm_client_catalogue:
+    resource: "@TunisiaMallTMBundle/Resources/config/clientRouting/CRoutingCatalog.yml"
+    prefix:   /
+tunisia_mall_tm_client_livraison:
+    resource: "@TunisiaMallTMBundle/Resources/config/clientRouting/CRoutingLivraison.yml"
+    prefix:   /
+
+
+#---------------------------------------ResEns
+tunisia_mall_tm_resEns_index:
+    resource: "@TunisiaMallTMBundle/Resources/config/resEnsRouting/ERoutingIndex.yml"
+    prefix:   /
+tunisia_mall_tm_resEns_produit:
+    resource: "@TunisiaMallTMBundle/Resources/config/resEnsRouting/ERoutingProduit.yml"
+    prefix:   /    
+
+    
+
+#---------------------------------------ResBout
+tunisia_mall_tm_resEns_index:
+    resource: "@TunisiaMallTMBundle/Resources/config/resEnsRouting/ERoutingIndex.yml"
+    prefix:   /
+tunisia_mall_tm_resEns_produit:
+    resource: "@TunisiaMallTMBundle/Resources/config/resEnsRouting/ERoutingProduit.yml"
+    prefix:   /
+tunisia_mall_tm_resEns_enseigne:
+    resource: "@TunisiaMallTMBundle/Resources/config/resEnsRouting/ERoutingEnseigne.yml"
+    prefix:   /
+tunisia_mall_tm_boutique:
+    resource: "@TunisiaMallTMBundle/Resources/config/resEnsRouting/ERoutingBoutique.yml"
+    prefix:   /
+ERoutingCatalogues:
+    resource: "@TunisiaMallTMBundle/Resources/config/resEnsRouting/ERoutingCatalogue.yml"
+    prefix:   /      
+ERoutingFidelites:
+    resource: "@TunisiaMallTMBundle/Resources/config/resEnsRouting/ERoutingFidelite.yml"
+    prefix:   /
+    
+#---------------------------------------Admin
+tunisia_mall_tm_admin_index:
+    resource: "@TunisiaMallTMBundle/Resources/config/adminRouting/ARoutingIndex.yml"
+    prefix:   /
+tunisia_mall_tm_admin_produit:
+    resource: "@TunisiaMallTMBundle/Resources/config/adminRouting/ARoutingProduit.yml"
+    prefix:   /
+
+
+tunisia_mall_tm_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TunisiaMallTMBundle:Default:index }
+
+
+index:
+    path:     /index
+    defaults: { _controller: TunisiaMallTMBundle:Controller:clientController:CLivraison:index }

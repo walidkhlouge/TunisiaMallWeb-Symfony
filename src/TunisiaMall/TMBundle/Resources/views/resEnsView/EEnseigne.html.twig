@@ -1,0 +1,98 @@
+
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+
+{% block content %}
+    <div class="side-body ">
+        {% for i in m %}
+            <div class="col-md-12 col-md-offset-0">
+                <div class="card text-xs-center" id="item-{{ i.nomenseigne }}">
+                    <center><img class="card-img-top" src="{{asset('GUI/images/enseigne/')}}{{i.url}}" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">{{i.nomenseigne}}</h4>
+                            <p class="card-text">{{i.info}}</p>
+                            <p class="card-text">{{i.adresse}}</p>
+                            <a href="{{path('supp',{'id':i.nomenseigne})}}"  class="btn btn-primary">Supprimer</a>
+                            <a href="{{path('modif',{'id':i.nomenseigne})}}"  class="btn btn-primary">Modifier</a>
+                        </div>
+                    </center> 
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="navigation">
+            <center> {{ knp_pagination_render(m) }}</center>
+        </div>
+    </div>
+    <div class="col-md-10 col-md-offset-10">
+        <a class="btn btn-success" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-plus">Ajouter</i></a>
+    </a>
+</div>
+{#"{{ socialButtons() }}"#}
+
+<div class ="modal fade" id="myModal" role ="dialog">
+
+    <div class ="modal-dialog">
+        <div class ="modal-content modalInscription">
+            <a data-dismiss="modal" class="close modalInscriClose"><i class="fa fa-times-circle "></i></a>
+            <div class ="modal-header">
+                <h1>Ajouter nouvelle enseigne</h1>
+            </div>
+            <form method="post" {{ form_enctype(f) }}>
+                <div class ="modal-body">
+                    <div class="container-fluid">
+                        <section class="container">
+                            <div class="container-page">
+                                <div class="col-md-6">
+                                    <div class="form-group col-md-12" id ="username">
+                                        <label>Nom d'enseigne</label>                      
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                                {{form_widget(f.nomenseigne)}}
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                        <small id="output_checkuser"></small>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Adresse</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                                                {{form_widget(f.adresse)}}
+                                        </div>
+                                        <div class="help-block with-errors "></div>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Description</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
+                                                {{form_widget(f.info)}}
+                                        </div>
+                                        <div class="help-block with-errors "></div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Image</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
+                                                {{form_widget(f.file)}}
+                                        </div>
+                                        <div class="help-block with-errors "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class = "modal-footer">
+                            <a class ="btn btn-default" data-dismiss ="modal">Annuler</a>
+                            <div class ="btn btn-default">{{form_rest(f)}}</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

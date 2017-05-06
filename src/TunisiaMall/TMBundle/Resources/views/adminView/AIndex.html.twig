@@ -1,0 +1,273 @@
+
+<html>
+
+
+<!-- Mirrored from tui2tone.github.io/flat-admin-bootstrap-templates/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Mar 2016 01:36:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Paneau de configuration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fonts -->
+    <link href="{{asset('http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400')}}" rel='stylesheet' type='text/css'>
+    <link href="{{asset('http://fonts.googleapis.com/css?family=Lato:300,400,700,900')}}" rel='stylesheet' type='text/css'>
+    <!-- CSS Libs -->
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/css/animate.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/css/bootstrap-switch.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/css/checkbox3.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/css/dataTables.bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/css/select2.min.css')}}">
+    <!-- CSS App -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/themes/flat-blue.css')}}">
+</head>
+
+<body class="flat-blue">
+    <div class="app-container">
+        <div class="row content-container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-expand-toggle">
+                            <i class="fa fa-bars icon"></i>
+                        </button>
+                        <ol class="breadcrumb navbar-breadcrumb">
+                            <li class="active">Dashboard</li>
+                        </ol>
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-th icon"></i>
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">0</span>
+                                </li>
+                                <li class="message">
+                                    No new notification
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown danger">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+                            <ul class="dropdown-menu danger  animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">4</span>
+                                </li>
+                                <li>
+                                    <ul class="list-group notifications">
+                                        
+                                        <a href="{{path('_Demande')}}">
+                                            <li class="list-group-item">
+                                                <span class="badge success">1</span> <i class="fa fa-check icon"></i> Demandes
+                                            </li>
+                                        </a>
+                                        
+                                        <a href="#">
+                                            <li class="list-group-item message">
+                                                view all
+                                            </li>
+                                        </a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown profile">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="profile-img">
+                                    <img src="{{asset('img/profile/picjumbo.com_HNCK4153_resize.jpg')}}" class="profile-img">
+                                </li>
+                                <li>
+                                    <div class="profile-info">
+                                        <h4 class="username">Emily Hart</h4>
+                                        <p>emily_hart@email.com</p>
+                                        <div class="btn-group margin-bottom-2x" role="group">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="side-menu sidebar-inverse">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa fa-paper-plane"></div>
+                                <div class="title">Paneau d'administration</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="{{path('admin_index')}}">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">Home</span>
+                                </a>
+                            </li>
+                            
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-table">
+                                    <span class="icon fa fa-table"></span><span class="title">Comptes</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-table" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="{{path('Gestion')}}">Gestion</a>
+                                            </li>
+                                            <li><a href="{{path('_Demande')}}">Demandes</a>
+                                            </li>
+                                            <li><a href="{{path('_GraphicPie')}}">Statistiques</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-form">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Pack Publicitaire</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-form" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="{{path('_creepack')}}">Ajouter</a>
+                                            </li>
+                                            <li><a href="{{path('ListePack')}}">Liste des packs</a>
+                                            </li>
+                                            <li><a href="{{path('GraphicPie2')}}">Statistiques</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+            <!-- Main Content -->
+            {% block content %}
+            <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row  no-margin-bottom">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="card primary">
+                                        <div class="card-jumbotron no-padding">
+                                            <canvas id="jumbotron-line-chart" class="chart no-padding"></canvas>
+                                        </div>
+                                        <div class="card-body half-padding">
+                                            <h4 class="float-left no-margin font-weight-300">Profits</h4>
+                                            <h2 class="float-right no-margin font-weight-300">{{ s }} Dinars</h2>
+                                            <div class="clear-both"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card primary">
+                                        <div class="card-jumbotron no-padding">
+                                            <canvas id="jumbotron-bar-chart" class="chart no-padding"></canvas>
+                                        </div>
+                                        <div class="card-body half-padding">
+                                            <h4 class="float-left no-margin font-weight-300">Orders</h4>
+                                            <div class="clear-both"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="card primary">
+                                        <div class="card-jumbotron no-padding">
+                                            <canvas id="jumbotron-line-2-chart" class="chart no-padding"></canvas>
+                                        </div>
+                                        <div class="card-body half-padding">
+                                            <h4 class="float-left no-margin font-weight-300">Pages view</h4>
+                                            <div class="clear-both"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <div class="title"><i class="fa fa-comments-o"></i> Last Message</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                                <div class="card-body no-padding">
+                                    <ul class="message-list">
+                                        {% for c in listeComs %}
+                                        <a href="#">
+                                            <li>
+                                                <img src="{{asset('GUI/images/'~c.client.photo)}}" class="profile-img pull-left">
+                                                <div class="message-block">
+                                                    <div><span class="username">{{ c.client.login }}</span> <span class="message-datetime">12 min ago</span>
+                                                    </div>
+                                                    <div class="message">{{ c.commentaire }}</div>
+                                                </div>
+                                            </li>
+                                        </a>
+                                        {% endfor %}
+                                        <a href="#" id="message-load-more">
+                                            <li class="text-center load-more">
+                                                <i class="fa fa-refresh"></i> load more..
+                                            </li>
+                                        </a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           {% endblock %}
+
+        <footer class="app-footer">
+            <div class="wrapper">
+                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+            </div>
+        </footer>
+        <div>
+            <!-- Javascript Libs -->
+            <script type="text/javascript" src="{{asset('lib/js/jquery.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/bootstrap.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/Chart.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/bootstrap-switch.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/jquery.matchHeight-min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/jquery.dataTables.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/dataTables.bootstrap.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/select2.full.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/ace/ace.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/ace/mode-html.js')}}"></script>
+            <script type="text/javascript" src="{{asset('lib/js/ace/theme-github.js')}}"></script>
+            <!-- Javascript -->
+            <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/index.js')}}"></script>
+</body>
+
+
+<!-- Mirrored from tui2tone.github.io/flat-admin-bootstrap-templates/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Mar 2016 01:37:05 GMT -->
+</html>
+

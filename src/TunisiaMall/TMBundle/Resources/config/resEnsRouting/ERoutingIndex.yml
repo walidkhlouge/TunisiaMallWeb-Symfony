@@ -1,0 +1,22 @@
+enseigne_index:
+    path:     /enseigne_index
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/EIndex:index }
+enseigne_visite:
+    path:     /enseigne_visite
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Visitevirtuelle:index }
+enseigne_fid:
+    path:     /fidelite
+    defaults: { _controller: "TunisiaMallTMBundle:resEnsController/Fidelite:index" }   
+    
+redirection_mail:
+    path:     /mail
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/TestMail:redirection }
+    
+redirection_send:
+    path:     /sendmail
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/TestMail:sendmail } 
+    
+    
+enseigne_catalogue:
+    path:     /catalogue
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Catalogue:index }    

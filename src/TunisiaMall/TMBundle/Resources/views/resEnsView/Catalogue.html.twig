@@ -1,0 +1,31 @@
+{# empty Twig template #}
+
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+{% block content %}
+    
+    
+    <div class="side-body padding-top">
+        <h1 class='text-primary' align="center"> Liste des produits  disponibles   </h1>
+      <a type="button" class="btn btn-info" class="fa fa-plus"  href="{{ path('voir_cata')}}" >Voir catalogue</a> 
+        <div class="col-md-12 col-md-offset-0">
+            {% for i in entities %}
+                <div class="card text-xs-center" id="item-{{ i.idproduit }}">
+                    <center><img class="card-img-top" src="{{asset('GUI/images/produit/')}}{{i.url}}" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">{{i.nom}}</h4>
+                            <p class="card-text">{{i.info}}</p>
+                            <p class="card-text">{{i.nomenseigne}}</p>
+                            <a  class="btn btn-primary" href="{{path('ajout_catalogue',{'id': i.idproduit ,'nom':i.nomenseigne})}}" >Ajouter</a>
+                        
+                            
+                        </div>
+                    </center> 
+                </div>
+            {% endfor %}        
+        </div>
+
+
+
+
+    </div>
+{% endblock %}

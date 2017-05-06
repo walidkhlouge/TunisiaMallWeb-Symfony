@@ -1,0 +1,13 @@
+{% extends "TunisiaMallTMBundle:clientView:CIndex.html.twig" %}
+{% block body50 %}
+</div>
+<footer>
+        <div class="form-req mt35">
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+    {{ form_widget(form) }}
+    <div>
+        <input class="btn btn-icon btn-clicked btn--sendord flaticon-delivery55 mt45" type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>
+        </div>
+{% endblock %}

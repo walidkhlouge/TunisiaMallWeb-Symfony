@@ -1,0 +1,544 @@
+
+{% extends "TunisiaMallTMBundle::clientView/CIndex.html.twig" %}
+{%block body3 %}
+ <section id="s-produit" class="s-list">
+                 <h2 class="b-title ct1 text-center">NOS PRODUITS?</h2>
+                   <form method="POST" action="">   
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   
+                    <select name="chercher" class="selectpicker" data-live-search="true" onChange="this.form.submit()">
+                        <option disabled selected value> -- Choisir  Produit ? -- </option>
+                            {% for produit in produits2 %}
+                                  {% if produit.Idboutique is not null %}
+                       <option data-tokens = " {{produit.Nom}}" >{{produit.Nom}}</option>
+                       {% endif %}
+  {%endfor %}
+                    </select></br></br></br>  
+                 </form>
+              
+
+                <div class="container">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tort">
+                            <div class="row items-place">
+                                {#{% for produit in produits %}#}
+                                {% for produit in pagination %}
+                                    {% if produit.Idboutique is not null %}
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
+                                    <article class="item  animated wow" data-wow-duration="0.7s">
+                                        <a href="item-detail.html" class="link-item" data-toggle="modal" data-target="#modal_detailed" data-remote="false"><h4 class="hidden">Blue with cream Pancake</h4></a>
+                                        <div class="wrap">
+                                            <img class="stable full-w" src="{{asset('GUI/images/produit/' ~ produit.url)}}" alt="">
+                                            <div class="desc">
+                                                <a class="name link-item" href="item-detail.html" data-toggle="modal" data-target="#modal_detailed" data-remote="false">{{produit.nom }}</a>
+                                                  <form action="{{ path('client_ajoutPanier', { 'id' : produit.idProduit }) }}" mathod="post">
+                                                <div class="weight">
+                                                    
+                                                    {% set z=0 %}
+                                                    {% set b=0 %}
+                                                  {% for taille in tailles  if b==0 and z==0%}
+                                                      <!-- ken andou taille ou pas -->
+                                                     {% if taille.idProduit.idProduit==produit.idProduit %}
+                                                     {% set b=1 %}
+                                                     {%endif %}
+                                                     {% endfor %}
+                                                     {% if b==1 %}
+                                                
+                                                      
+                                                    {% for taille2 in tailles %}  
+                                                        {%set  c=0 %}
+                                                        {%for panier in paniers if c==0 %}<!-- kenou mawjoud panier wallé -->
+                                                   
+                                                            {% if taille2.idProduit.idProduit == panier.idProduit.idProduit and taille2.taille==panier.taille and taille2.quantite>0 %}
+                                                                {%set c=1%}
+                                                                {% endif %}
+                                                             {% endfor %}
+                                                        
+                                                          {% if taille2.idProduit.idProduit==produit.idProduit and c==0 %}  <!-- ken el produit andou menha taille hetheka w mahich fel panier  -->
+                                                    {%set z=1 %}
+                                                    {%endif %}
+                                                    {%endfor%}
+                                                   
+                                                    {% endif %}
+                                                    
+                                                    
+                                                    
+                                                   {% if z== 1%} 
+                                                    {% set b=0 %}
+                                                  {% for taille in tailles  if b==0%}
+                                                      <!-- ken andou taille ou pas -->
+                                                     {% if taille.idProduit.idProduit==produit.idProduit %}
+                                                     {% set b=1 %}
+                                                     {%endif %}
+                                                     {% endfor %}
+                                                     {% if b==1 %}
+                                                  taille :  <select name="taille">
+                                                      
+                                                    {% for taille2 in tailles %}  
+                                                        {%set  c=0 %}
+                                                        {%for panier in paniers if c==0 %}<!-- kenou mawjoud panier wallé -->
+                                                   
+                                                            {% if taille2.idProduit.idProduit == panier.idProduit.idProduit and taille2.taille==panier.taille and taille2.quantite>0 %}
+                                                                {%set c=1%}
+                                                                {% endif %}
+                                                             {% endfor %}
+                                                        
+                                                          {% if taille2.idProduit.idProduit==produit.idProduit and c==0 %}  <!-- ken el produit andou menha taille hetheka w mahich fel panier  -->
+                                                    <option value="{{ taille2.taille }}">{{taille2.taille}}</option> 
+                                                    {%endif %}
+                                                    {%endfor%}
+                                                    </select>
+                                                    {% endif %}
+                                                    
+                                                </div>
+                                                <div class="price"><b>{{ produit.prixVenteUnitaire }} DT</b>
+                                                </div>
+                                                <div class="changes">
+                                                  
+                                                    <div class="media-left media-middle ta-right">
+                                                        <button class="btn btn-sm btn-icon btn-clicked btn--moema flaticon-trolley7" type="submit" > AJOUTER AU PANIER</button>
+                                                   
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                  </form>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                                
+                             
+                                           
+                                <div id="item-detail-content1" class="item-detailed-content hidden">
+                                    <button type="button" class="overlay-close inner visible-xs" data-dismiss="modal">×</button>
+                                    <form action="http://html.yenisite.ru/best-dessert-eng/index.html">
+                                        <div class="b-title text-center">Blueberries with cream pancake cake</div>
+                                        <div class="item-detail">
+                                            <!-- Swiper -->
+                                            <div class="swiper-container it-gallery">
+                                                <div class="swiper-wrapper">
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="it-gallery-thumbs">
+                                                <div class="it-gallery-thumbs-wrap">
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb1.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb2.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb3.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb4.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb4.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb4.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="clearfix">
+                                                <div class="it-info">
+                                                    <div class="text-list">
+                                                        <div class="name">Details:</div>
+                                                        <div class="text">Delicate pancake dough layers soaked in whipped cream and blueberry jam with the addition of blueberries. Decorated with fresh berries, sugar and mint leaves.</div>
+                                                    </div>
+                                                    <div class="text-list">
+                                                        <div class="name">Weight: <span class="fw-n">1800</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-list">
+                                                        <div class="name">Ingredients:</div>
+                                                        <div class="text">Eggs, milk, cream, sugar, wheat flour, salt, vanilla extract, corn starch, mascarpone cheese, cofee liqueur, apple vinegear, lemon juice, fresh and frozen blueberry.</div>
+                                                    </div>
+                                                    <div class="text-list">
+                                                        <div class="name">Nutrition facts (for 100g of product):</div>
+                                                        <div class="text">
+                                                            <div class="line">
+                                                                <strong>Calories:</strong> 218.3 kcal
+                                                            </div>
+                                                            <div class="line">
+                                                                <strong>Protein:</strong> 6.8 g
+                                                            </div>
+                                                            <div class="line">
+                                                                <strong>Total Fat:</strong> 13.9 g
+                                                            </div>
+                                                            <div class="line">
+                                                                <strong>Carbohydrate:</strong> 16.7 g
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="composition">
+                                                    <div class="form-group">
+                                                        <div class="text-list mb20">
+                                                            <div class="name">Choose berries:</div>
+                                                            <select class="selectpicker sel-berry bs-select-hidden">
+                                                                <option class="icon-comp ico-cher" value="1">Blueberry</option>
+                                                                <option class="icon-comp ico-vish" value="2">Cherry</option>
+                                                                <option class="icon-comp ico-klub" value="3">Strawberry</option>
+                                                                <option class="icon-comp ico-mal" value="4">Raspberry</option>
+                                                                <option class="icon-comp ico-ej" value="5">Blackberry</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="text-list">
+                                                            <div class="name">Choose weight:</div>
+                                                            <select class="selectpicker bs-select-hidden">
+                                                                <option class="" value="1">Standard (1,8 kg)</option>
+                                                                <option class="" value="2">More (2,8 kg)</option>
+                                                                <option class="" value="3">Less (0,8 kg)</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="it-price">
+                                                            <div class="it-sum">
+                                                                <input type="hidden" value="650"><strong>$22</strong>
+                                                            </div>
+                                                            <div class="ib input-group counter-badge">
+                                                                <div class="input-group-btn">
+                                                                    <button type="button" class="btn btn-v2 btn-v2-h2 btn-number" data-type="minus" data-field="quant[12]">-</button>
+                                                                </div>
+                                                                <input type="text" name="quant[12]" class="form-control input-number" value="1" data-min="1" data-max="100">
+                                                                <div class="input-group-btn">
+                                                                    <button type="button" class="btn btn-v2 btn-v2-h2 btn-number" data-type="plus" data-field="quant[12]">+</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <button type="submit" class="btn btn-buy btn-icon btn-clicked btn--moema flaticon-trolley7">Buy</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                               {% endif %}
+                                {% endfor %}
+                               
+                              
+                              
+                                <div id="item-detail-content5" class="item-detailed-content hidden">
+                                    <button type="button" class="overlay-close inner visible-xs" data-dismiss="modal">×</button>
+                                    <form action="http://html.yenisite.ru/best-dessert-eng/index.html">
+                                        <div class="b-title text-center">Blueberries with cream pancake cake</div>
+                                        <div class="item-detail">
+                                            <!-- Swiper -->
+                                            <div class="swiper-container it-gallery">
+                                                <div class="swiper-wrapper">
+                                               <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/blank-item-big1.jpg')}}" alt="" data-zoom-image="{{asset('img/blank-item-big1.jpg')}}">
+                                                    </div>
+                                                    <div class="it-big swiper-slide">
+                                                        <img class="zoom-img" src="{{asset('img/discounts-bg.jpg')}}" alt="" data-zoom-image="{{asset('img/discounts-bg.jpg')}}">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="it-gallery-thumbs">
+                                                <div class="it-gallery-thumbs-wrap">
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb1.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb2.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb3.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb4.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb4.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb4.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="it-thumb">
+                                                        <div class="wrap">
+                                                            <img src="{{asset('img/blank-item-thumb5.jpg')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="clearfix">
+                                                <div class="it-info">
+                                                    <div class="text-list">
+                                                        <div class="name">Details:</div>
+                                                        <div class="text">Delicate pancake dough layers soaked in whipped cream and blueberry jam with the addition of blueberries. Decorated with fresh berries, sugar and mint leaves.</div>
+                                                    </div>
+                                                    <div class="text-list">
+                                                        <div class="name">Weight: <span class="fw-n">1800 g</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-list">
+                                                        <div class="name">Ingredients:</div>
+                                                        <div class="text">Eggs, milk, cream, sugar, wheat flour, salt, vanilla extract, corn starch, mascarpone cheese, cofee liqueur, apple vinegear, lemon juice, fresh and frozen blueberry.</div>
+                                                    </div>
+                                                    <div class="text-list">
+                                                        <div class="name">Nutrition facts (for 100g of product):</div>
+                                                        <div class="text">
+                                                            <div class="line">
+                                                                <strong>Calories:</strong> 218.3 kcal
+                                                            </div>
+                                                            <div class="line">
+                                                                <strong>Protein:</strong> 6.8 g
+                                                            </div>
+                                                            <div class="line">
+                                                                <strong>Total Fat:</strong> 13.9 g
+                                                            </div>
+                                                            <div class="line">
+                                                                <strong>Carbohydrate:</strong> 16.7 g
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="composition">
+                                                    <div class="form-group">
+                                                        <div class="text-list mb20">
+                                                            <div class="name">Choose berries:</div>
+                                                            <select class="selectpicker sel-berry bs-select-hidden">
+                                                                <option class="icon-comp ico-cher" value="1">Blueberry</option>
+                                                                <option class="icon-comp ico-vish" value="2">Cherry</option>
+                                                                <option class="icon-comp ico-klub" value="3">Strawberry</option>
+                                                                <option class="icon-comp ico-mal" value="4">Raspberry</option>
+                                                                <option class="icon-comp ico-ej" value="5">Blackberry</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="text-list">
+                                                            <div class="name">Choose weight:</div>
+                                                            <select class="selectpicker bs-select-hidden">
+                                                                <option class="" value="1">Standard (1,8 kg)</option>
+                                                                <option class="" value="2">More (2,8 kg)</option>
+                                                                <option class="" value="3">Less (0,8 kg)</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="it-price">
+                                                            <div class="it-sum">
+                                                                <input type="hidden" value="650"><strong>$22</strong>
+                                                            </div>
+                                                            <div class="ib input-group counter-badge">
+                                                                <div class="input-group-btn">
+                                                                    <button type="button" class="btn btn-v2 btn-v2-h2 btn-number" data-type="minus" data-field="quant[12]">-</button>
+                                                                </div>
+                                                                <input type="text" name="quant[12]" class="form-control input-number" value="1" data-min="1" data-max="100">
+                                                                <div class="input-group-btn">
+                                                                    <button type="button" class="btn btn-v2 btn-v2-h2 btn-number" data-type="plus" data-field="quant[12]">+</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <button type="submit" class="btn btn-buy btn-icon btn-clicked btn--moema flaticon-trolley7">Buy</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                           
+                               
+                            
+                              
+                          
+                            </div>
+                            
+                        </div>
+                        
+     
+                                                   
+                    </div>
+                </div>
+            </section>
+                                                        
+                                <center>
+                                   
+                                    <div class="navigation">
+                                        {{ knp_pagination_render(pagination) }}
+                                    </div>
+                                </center>
+                                       {%endblock %}

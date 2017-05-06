@@ -1,0 +1,52 @@
+{% extends 'TunisiaMallTMBundle:resBoutView:AfficherProfil.html.twig' %}
+{% block content %}
+ 
+       <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row">
+                          <div class="content">
+  
+      
+          <div id="div">
+          <h1 id="n">Compte -Responsable Boutique</h1>    
+                <h2>Produits enseigne</h2>
+             <legend></legend>
+    
+ <div class="card">
+    <table class="datatable table table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+               
+                <th>Nom              </th>
+                <th>Reference        </th>
+                <th>Info             </th>
+                <th>Photo            </th>
+                <th>Actions          </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+        {% for a in comptes %} 
+            {% if entity.idboutique==null %}
+            <tr>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.reference }}</td>
+                <td>{{ entity.info }}</td>
+                <td> <img src="{{asset('gui/boutique/'~entity.url)}}" id="imgProd"</td>
+                <td> 
+                     <ul>
+                         <a href="{{ path('ajouter_produit', { 'id': entity.idproduit,'login':a.login }) }}"><button type="button" class="btn btn-info">+Ajouter à ma boutique</button></a>
+                     </ul> 
+                     <ul>
+                         <a href="{{ path('ajouter_taille_produit', { 'id': entity.idproduit,'login':a.login }) }}"><button type="button" class="btn btn-info">+Ajouter taille</button></a>
+                     </ul> 
+               </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+       
+        </tbody>
+        </table>
+        </div>
+    {% endblock %}

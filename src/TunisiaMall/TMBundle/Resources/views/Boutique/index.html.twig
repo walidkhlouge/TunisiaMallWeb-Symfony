@@ -1,0 +1,62 @@
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+
+{% block content %}
+    <div class="side-body padding-top">
+
+        <div class = "table-responsive">
+            <table   class="table table-bordered table-striped table-hover table-condensed" id="tableB" datatable="" >
+                <thead>
+                    <tr>
+                        <th>Idboutique</th>
+                        <th>Intitule</th>
+                        <th>Nom Enseigne</th>
+                        <th>Responsable Boutique</th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('boutique_show', { 'id': entity.idboutique }) }}">{{ entity.idboutique }}</a></td>
+                            <td class = "active">{{ entity.intitule }}</td>
+                            <td class = "active">{{ entity.nomenseigne.nomenseigne}}</td>
+                            <td class = "active">{{ entity.loginresponsableboutique.login }}</td>
+
+                            <td class = "active"> <img src="{{asset('GUI/images/boutique/')}}{{ entity.url }}" alt="{{ entity.url }}"
+                                                       style="width: 50px"> </td>
+
+
+                            <td>
+                                <div>
+                                    <a type="button" class="btn btn-info" class="fa fa-plus"  href="{{ path('boutique_edit', { 'id':entity.idboutique })}}">Modifier</a>
+
+                                    <a   class="btn btn-danger" class="fa fa-plus" href="{{ path('boutique_delete', { 'id':entity.idboutique })}}">Supprimer</a>
+
+
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="navigation">
+                <center> {{ knp_pagination_render(entities) }}</center>
+            </div>
+        </div>
+        <a  class="btn btn-success" href="{{ path('boutique_new')}}">
+
+            <i class="fa fa-plus">Ajouter</i></a></h3>
+
+
+
+</div>            
+{% endblock %}
+
+{% block footer %} 
+    {{ parent() }}
+
+
+{% endblock %}
+
+

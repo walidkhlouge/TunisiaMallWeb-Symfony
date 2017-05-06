@@ -1,0 +1,27 @@
+       {% for a in comptes %}
+    <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-body">
+   
+       <div class="span3 well">
+        <center> 
+        <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="{{asset('gui/profil/'~a.photo)}}" width="140" height="140" class="img-circle"></a>
+           <br/> <label id="labe"> Login : </label>
+            <label id="labb">{{a.login}}</label>
+            <br/> <label id="labe"> Type de compte : </label>
+            <label id="labb">{{a.type}}</label>
+            <br/> <label id="labe"> Sexe : </label>
+            <label id="labb">{{a.sexe}}</label>
+            <br/> <label id="labe"> Date de naissance : </label>
+            <label id="labb">{{a.datenaissance|date('d/m/y')}}</label>
+        </center>
+    </div> 
+</div>
+       <div class="modal-footer">
+                    
+     <button type="button" class="btn btn-info" data-dismiss="modal">X</button>
+               
+                </div>
+            </div></div>
+  {% endfor %}                                          
+                                

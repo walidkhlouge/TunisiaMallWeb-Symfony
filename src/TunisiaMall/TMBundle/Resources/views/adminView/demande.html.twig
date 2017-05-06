@@ -1,0 +1,18 @@
+{% extends 'TunisiaMallTMBundle:adminView:AIndex.html.twig' %}
+{% block content %}
+     <h1>fdfsgf</h1>
+    <table class="table table-hover">
+        {% for utilisateur in listeDemandes %}
+                                        <tr>
+                                            <td></td>
+                                             <td></td>
+                                            <td>{{utilisateur.nom }} {{utilisateur.prenom }} Souhaite devenir un {{ utilisateur.type }}</td>
+                                            <td><form method="POST" action="{{ path('admin_activate', { 'login' : utilisateur.login }) }}">
+                                                      <input type ="submit" class="fa fa-check icon"></td>
+                                            
+                                            
+                                            
+                                        </tr>
+        {% endfor %}  
+        
+{% endblock %}

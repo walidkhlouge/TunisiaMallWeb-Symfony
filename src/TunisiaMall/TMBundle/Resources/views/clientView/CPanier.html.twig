@@ -1,0 +1,144 @@
+                            
+{% extends "TunisiaMallTMBundle::clientView/CIndex.html.twig" %}
+{%block body3 %}  
+<div  id="modal_cart" aria-hidden="true" data-backdrop="true" data-keyboard="true" tabindex="-1">
+        <button type="button" class="overlay-close hidden-xs" data-dismiss="modal">&#215;</button>
+        <div class="modal-content detail-popup" id="cartView-popup">
+{% set total=0 %}            
+          
+                <div class="b-title text-center c-white">Your Cart</div>
+                <div class="wrap-cart-window clearfix">
+                    <div class="cart-items">
+                        <div class="visible-xs ci-thead-mob ci-info"><span class="ct2">Items:</span>&nbsp;<span class="ci-length">{{paniers|length}}</span> <span class="ct2 pl20">VOS PRODUITS:</span>&nbsp;
+                        </div>
+                        <table class="table">
+                            <thead class="ci-head hidden-xs">
+                            <tr>
+                                <th class="ci-info pl25" colspan="2"><span class="ct2">Items:</span>&nbsp;<span class="ci-length">{{paniers|length}}</span> <span class="ct2 pl20">VOS PRODUITS:</span>&nbsp;
+                                </th>
+                                <th class="text-center">Quantite</th>
+                                <th class="text-center">Prix</th>
+                                <th class="text-center">Totale</th>
+                                <th class="text-center">Supprimer</th>
+                            </tr>
+                            </thead>
+                                 <tbody >
+                                    
+
+                                     {%  if paniers |length >0 %}
+                                     {% for pan in paniers %}
+                                   
+                            <tr class="ci-item">
+                                <td class="col-sm-1 col-md-1 col-xs-2">
+                                    <div class="media">
+                                        <a class="link-item" href="item-detail.html" data-toggle="modal" data-target="#modal_detailed" data-remote="false"> <img class="media-object" src="{{asset('GUI/images/produit/' ~ pan.idProduit.url)}}" alt=""></a>
+                                    </div>
+                                </td>
+                                <td class="ci-text hidden-xs col-sm-4 col-md-3">
+                                    {{pan.idProduit.nom}} taille : {{ pan.taille }} 
+                                </td>
+                                <td class="col-sm-1 col-md-2 col-xs-7 text-center">
+                                    <a href="item-detail.html" class="ci-text link-item visible-xs" data-toggle="modal" data-target="#modal_detailed" data-remote="false">Pigeons's milk</a>
+                                    
+                                    <form   action="{{ path('client_modifPanier', { 'id' : pan.idProduit.idProduit,'taille':pan.taille }) }}" method="post" > 
+                                         <select  name="qte" class="span1" onChange="this.form.submit()">
+                                             {%set qt=-20%}
+                                           {% for taille in tailles  if qt==-20%} 
+                                               
+                                             {% if pan.idProduit.idProduit== taille.idProduit.idProduit and pan.taille== taille.taille %}
+                                                 {% set qt=taille.quantite %}
+                                                 {% endif%}
+                                                 {% endfor %}
+                                               
+                                    {% for i in 1..qt %}
+                                        
+                                        <option value="{{ i }}" {% if i == pan.nombre%} selected="selected" {% endif %}>{{ i }}</option>
+                                    {% endfor %}
+                                    {% set total=total+pan.nombre*pan.idProduit.prixVenteUnitaire %}
+                                </select>
+                                </form>
+                                </td>
+                                <td class="ci-num hidden-xs col-sm-1 col-md-2 text-center"><strong class="ci-sum-single">{{ pan.idProduit.prixVenteUnitaire }}</strong>
+                                </td>
+                                <td class="ci-num hidden-xs col-sm-1 col-md-2 text-center"><strong>DT </strong><strong class="ci-sum-item">{{ pan.idProduit.prixVenteUnitaire * pan.nombre}} </strong>
+                                </td>
+                                <td class="col-sm-1 col-md-2 col-xs-3 text-center">
+                                    <div class="ci-num visible-xs"><strong>{{total}}</strong>
+                                    </div>
+                                     <a href="{{ path('client_supprimerPanier', { 'id' : pan.idProduit.idProduit ,'taille':pan.taille }) }}"  class="btn-remove"></a>
+                                     
+                                </td>
+                            </tr>
+                      
+                            {% endfor %}
+                            {% else  %}
+                            <h1> votre panier est vide pour le moment
+                            {% endif %}
+                            
+                            </tbody>
+
+                        </table>
+
+                        <div class="ci-bottom text-left clearfix">
+
+                            <div class="ci-sum-all">
+                                <div class="name">Total:</div>
+                                <div class="dtab">
+                                    <div class="media-left pr10">
+                                        <div class="line">Quantite de tous les Produits</div>
+                                        <div class="line">Your discount:</div>
+                                        <div class="line">Total:</div>
+                                    </div>
+                                    <div class="media-left">
+                                        <div class="line"><strong class="ci-length">{{paniers|length}}</strong>
+                                        </div>
+                                        <div class="line"><strong class="ci-sum-promo">DT 4.5</strong>
+                                        </div>
+                                        <div class="line"> <strong>DT </strong><strong class="ci-sum-final">{{total}}</strong>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ci-promo form-group">
+                                <div class="dtab">
+                                    <div class="media-left media-middle">
+                                        <div class="name mr30">Do you know promotion
+                                            <br>discount code?</div>
+                                    </div>
+                                    <div class="media-left media-middle">
+                                        <div class="input-group input-with-btn">
+                                            <input type="text" class="form-control input-sm" placeholder="Redeem code">
+                                            <button type="button" class="btn btn-send btn-h2"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-req mt35">
+                        <form method="POST">
+                        <div class="form-group">
+                            <label for="f01">Numero Carte<span class="c-req">*</span>:</label>
+                            <input type="text" class="form-control" id="f01" data-min="2" required>
+                        </div>                        
+                        <div class="form-group">
+                            <label for="f04">Chiffres secrets<span class="c-req">*</span>:</label>
+                            <input type="text" class="form-control" id="f01" data-min="2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="f04">Adresse de livraison<span class="c-req">*</span>:</label>
+                            <textarea name="adresseLivraison" class="" id="f04" required></textarea>
+                        </div>
+                        <div class="description"><span class="c-req">*</span> : Champs obligatoires</div>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-icon btn-clicked btn--sendord flaticon-delivery55 mt45" value="Passer Commande"/>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+          
+        </div>
+    </div>
+                                        <br/>
+                            {%endblock %}

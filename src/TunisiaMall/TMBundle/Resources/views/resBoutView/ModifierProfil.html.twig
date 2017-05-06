@@ -1,0 +1,43 @@
+{% extends 'TunisiaMallTMBundle:resBoutView:AfficherProfil.html.twig' %}
+{% block content %}
+            
+<div class="well">
+            <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row">
+                          <div class="content">
+<form method="post">
+<div class="modal-content">
+         <div class="modal-header"> 
+          <h2 class="modal-title" id="n">Compte -Responsable Boutique</h2>   
+          <h4 id="k">Modifier Votre Profil</h4></div>
+    
+<div class="modal-body">          
+     <table class="datatable" cellspacing="0" width="50%">
+     <tr> <td>Login :</td></tr>
+     <td> {{form_widget(f.login)}}</td>
+     <tr><td>Mot de passe :</td><tr>
+     <td> {{form_widget(f.pwd)}}</td>
+     <tr><td>Nom :</td><tr>
+     <td> {{form_widget(f.nom)}}</td>     
+     <tr><td>Prenom :</td></tr>
+     <td> {{form_widget(f.prenom)}}</td>
+     <tr><td>Email :</td></tr>
+     <td> {{form_widget(f.adressemail)}}</td>
+     <tr><td>Sexe :</td></tr>
+     <td> {{form_widget(f.sexe)}}</td>
+     <tr><td>Date de naissance :</td></tr>
+     <td> {{form_widget(f.datenaissance)}}</td>
+</table>
+</div>
+<div class="modal-footer"> 
+      {{form_rest(f)}} 
+  </div>
+  </div>
+</form>
+  </div>
+  </div>
+  </div>
+
+                </div> </div>
+  {% endblock %}

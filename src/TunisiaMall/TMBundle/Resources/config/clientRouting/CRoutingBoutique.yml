@@ -1,0 +1,7 @@
+client_boutique:
+    path:     /client_boutique
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CBoutique:index }
+client_boutiqueByEns:
+    path:     /client_boutiqueByEns/{nomEnseigne}
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CBoutique:indexByEns }    
+

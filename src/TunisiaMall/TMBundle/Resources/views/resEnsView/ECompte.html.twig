@@ -1,0 +1,50 @@
+
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+
+{% block content %}
+    <div class="side-body ">
+        <h1>La Liste des Responsables boutiques </h1>
+        <div class = "table-responsive">
+            <table   class="table table-bordered table-striped table-hover table-condensed" id="tableB" datatable="" >
+                <thead>
+                    <tr>
+                        <th>Login</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Adresse email</th>
+                        <th>Boutique</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for i in m %}
+                    <form method="POST" action="{{path('validerC',{'id':i.login})}}">
+                        <tr>
+                            <td class = "active">{{ i.login }}</td>
+                            <td class = "active">{{ i.nom}}</td>
+                            <td class = "active">{{ i.prenom }}</td>
+                            <td class = "active">{{ i.adressemail }}</td>
+                            <td>
+                                <select name="valider" >
+                                    {% for c in f %}
+                                        <option {% if c.loginResponsableBoutique == i.login%} selected="selected" {% endif %} data-tokens = " {{ c.intitule }}" >{{ c.intitule }}</option>
+                                    {%endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <div>
+                                    <button type="submit" class="btn btn-info" class="fa fa-plus" >Valider</button>
+                                    <a href="{{path('suppC',{'id':i.login})}}"  class="btn btn-danger" class="fa fa-plus">Supprimer</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </form>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>       
+</div>
+</div>
+
+{% endblock %}

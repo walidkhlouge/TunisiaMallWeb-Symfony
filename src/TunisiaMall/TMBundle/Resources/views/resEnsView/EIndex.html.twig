@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    {% block head %}
+        <head>
+
+            <title>TunisiaMall - Espace Responsable Enseigne</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <!-- Fonts -->
+            {#{% stylesheets 'NurikabeStarRatingBundle/Resources/rating.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+            {% javascripts '%kernel.root_dir%/../vendor/fyneworks/star-rating/jquery.rating.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}#}
+            <link href="{{asset('http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400')}}" rel='stylesheet' type='text/css'>
+            <link href="{{asset('http://fonts.googleapis.com/css?family=Lato:300,400,700,900')}}" rel='stylesheet' type='text/css'>
+            <!-- CSS Libs -->
+            <link rel="stylesheet" type="text/css" href="{{asset('dist/lib/css/bootstrap.min.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('dist/lib/css/font-awesome.min.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('dist/lib/css/animate.min.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('dist/lib/css/bootstrap3/bootstrap-switch.min.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('dist/lib/css/checkbox3.min.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.dataTables.min.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('css/dataTables.bootstrap.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('dist/css/select2.min.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/starrating/css/rating.css')}}" />
+            <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+            <!-- CSS App -->
+            <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('css/themes/flat-blue.css')}}">
+        </head>
+    {% endblock %}
+    <body class="flat-blue">
+        <div class="app-container">
+            <div class="row content-container">
+                {% block topnav %}
+                    <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-expand-toggle">
+                                    <i class="fa fa-bars icon"></i>
+                                </button>
+                                <ol class="breadcrumb navbar-breadcrumb">
+                                    <li class="active">Tableau de bord</li>
+                                </ol>
+                                <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                                    <i class="fa fa-th icon"></i>
+                                </button>
+                            </div>
+                            <ul class="nav navbar-nav navbar-right">
+                                <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                                    <i class="fa fa-times icon"></i>
+                                </button>
+
+                                <li class="dropdown profile">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+                                    <ul class="dropdown-menu animated fadeInDown">
+                                        <li class="profile-img">
+                                            <img src="{{asset('img/profile/picjumbo.com_HNCK4153_resize.jpg')}}" class="profile-img">
+                                        </li>
+                                        <li>
+                                            <div class="profile-info">
+                                                <h4 class="username">Emily Hart</h4>
+                                                <p>emily_hart@email.com</p>
+                                                <div class="btn-group margin-bottom-2x" role="group">
+                                                    <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profil</button>
+                                                    <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Déconnexion</button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                {% endblock %}
+                {% block sidenav %}
+                    <div class="side-menu sidebar-inverse">
+                        <nav class="navbar navbar-default" role="navigation">
+                            <div class="side-menu-container">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="#">
+                                        <div class="icon fa fa-paper-plane"></div>
+                                        <div class="title">Responsable enseigne</div>
+                                    </a>
+                                    <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                        <i class="fa fa-times icon"></i>
+                                    </button>
+                                </div>
+                                <ul class="nav navbar-nav">
+                                    <li class="active">
+                                        <a href="{{path('enseigne_index')}}">
+                                            <span class="icon fa fa-tachometer"></span><span class="title">Tableau de bord</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path ('affichage_page')}}">
+                                            <span class="icon glyphicon glyphicon-home"></span><span class="title">Enseignes</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path ('enseigne_boutique')}}">
+                                            <span class="icon fa fa-shopping-bag"></span><span class="title">Boutiques</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a  href="{{path ('produit_produit')}}">
+                                            <span class="icon glyphicon glyphicon-shopping-cart"></span><span class="title">Produits</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path('affichage_pageC')}}">
+                                            <span class="icon fa fa-users"></span><span class="title">Résponsables boutiques</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path ('enseigne_fid')}}">
+                                            <span class="icon fa fa-credit-card-alt"></span><span class="title">Fidélisation</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path('stats')}}">
+                                            <span class="icon fa fa-pie-chart"></span><span class="title">Statistiques</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path ('enseigne_catalogue')}}">
+                                            <span class="icon fa fa-map-o"></span><span class="title">Catalogues</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path('affichage_pageP')}}">
+                                            <span class="icon fa fa-archive"></span><span class="title">Pack publicitaires</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a  href="{{path ('redirection_mail')}}">
+                                            <span class="icon fa fa-envelope"></span><span class="title">Reclamations</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </nav>
+                    </div>
+                {% endblock %}
+                <!-- Main Content -->
+                <div class="container-fluid">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+    </body>
+    {% block footer %}
+        <div>
+            <!-- Javascript Libs -->
+            <script type="text/javascript" src="{{asset('dist/lib/js/jquery.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/bootstrap.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/Chart.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/bootstrap-switch.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/jquery.matchHeight-min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/jquery.dataTables.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/dataTables.bootstrap.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/select2.full.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/ace/ace.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/ace/mode-html.js')}}"></script>
+            <script type="text/javascript" src="{{asset('dist/lib/js/ace/theme-github.js')}}"></script>
+            <!-- Javascript -->
+            <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/index.js')}}"></script>
+            <footer class="app-footer">
+                <div class="wrapper">
+                    <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+                </div>
+            </footer>
+        {% endblock %}
+</html>

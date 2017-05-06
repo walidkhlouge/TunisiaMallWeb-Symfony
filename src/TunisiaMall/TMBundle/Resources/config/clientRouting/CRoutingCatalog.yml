@@ -1,0 +1,6 @@
+client_catalogue:
+    path:     /catalogue
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CCatalogue:index }
+client_catalogue_produits:
+    path:     /catalogues/{idCatalogue}
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CCatalogue:afficher }

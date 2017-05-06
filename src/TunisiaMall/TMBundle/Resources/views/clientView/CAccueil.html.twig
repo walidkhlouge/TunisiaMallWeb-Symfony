@@ -1,0 +1,48 @@
+
+{% extends "TunisiaMallTMBundle::clientView/CIndex.html.twig" %}
+ 
+{% block body3 %}
+       <section id="s-clients" class="s-clients bg1">
+                
+                <div class="container">
+                    <h3> un petit commentaire ca te dit ?</h3>
+                    <form method="post" action="">
+                    {{form_widget(f.commentaire)}}
+                  {{form_rest(f)}}
+                    </form>
+                    <div class="row">
+                        <h2 class="b-title c-white text-center wow fadeIn">Customers reviews</h2>
+                        <div class="pseudo-overflow">
+                            <!-- Swiper -->
+                            <div class="swiper-container clients-slider">
+                                {% set i=0 %}
+                                <div class="swiper-wrapper">
+                                    
+                                    
+                                    {% for com in commentaire %}
+                                         {% set i=i+1 %}
+                                    <div class="swiper-slide rollIn wow client tooltip">
+                                        <div class="wrap">
+                                            <img src="{{asset('img/client'~i~'.jpg')}}" alt="">
+								<span class="tooltip-content default"><span class="name">{{ com.client.nom }} <span class="city">{{ com.client.prenom }}</span></span><span class="quote">"{{ com.commentaire }}."</span>
+								</span>
+                                        </div>
+                                    </div>
+                                                                {% endfor %}
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="cli-next-arrow bd-arrow-next"></div>
+                                <div class="cli-prev-arrow bd-arrow-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                                                                </br></br></br>
+                                                                
+                                                                <form method="post" action="">
+ <h4 class="b-title ct1 text-center"> Un Probleme Une Remarque ? ayez la liberte de Tout Reclamer </h4>{{form_widget(f2.reclamation)}}
+                  {{form_rest(f2)}}
+                                                                </form>
+                  "{{ socialButtons() }}"
+{% endblock %}

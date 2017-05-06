@@ -1,0 +1,15 @@
+client_index:
+    path:     /client_index
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CIndex:index }
+client_index_modif:
+    path:     /client_index_modif
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CIndex:indexModif }
+admin_user_search:
+    path:     /admin_user_searc
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CIndex:handler }   
+ville:
+    path:     /villes/{cp}
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CIndex:villes } 
+demands:
+    path:     /demands
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CIndex:demands } 

@@ -1,0 +1,31 @@
+## YAML Template.
+---
+enseigne_enseigne:
+    path:     /enseigne_enseigne
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/EEnseigne:index }
+enseigne_boutique:
+    path:     /boutique
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Boutique:index}
+    
+enseigne_fid:
+    path:     /fidelite
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Fidelite:Recherche }   
+    
+enseigne_catalogue:
+    path:     /catalogueq
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Catalogue:index }   
+supp_catalogue:
+    path:     /supp/{id}
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Catalogue:Supprimer } 
+ 
+ajout_catalogue:
+    path:     ajoutCatalogue/{id}/{nom}
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Catalogue:Ajout }  
+    
+voir_cata:
+    path:     voirCata
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Catalogue:voirCata }     
+    
+    
+    
+    

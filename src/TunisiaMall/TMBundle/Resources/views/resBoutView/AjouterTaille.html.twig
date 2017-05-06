@@ -1,0 +1,30 @@
+{% extends 'TunisiaMallTMBundle:resBoutView:AfficherProfil.html.twig' %}
+{% block content %}
+   
+     <div class="well">
+            <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row">
+                          <div class="content">
+           <div id="div">
+          <h2 class="modal-title" id="n">Compte -Responsable Boutique</h2>   
+   
+        <h2>Ajouter taille</h2>
+       <form method="post" action=""> 
+ <table class="datatable table table-striped" cellspacing="0" width="50%">
+    
+     <tr> <td>Taille :</td></tr>
+     <td><input type="taille" name="taille"></td>
+     <input type="hidden" value="{{id}}" name="idproduit">
+     <tr> <td>Quantité :</td></tr>
+     <tr><td><input type="quantite" name="quantite"></td><tr>
+    
+     <tr><td><input type="submit" name="ajouter"></td></tr>
+</table>
+
+
+  </form>
+          </div>    </div>
+                    </div>
+                </div></div></div>
+{% endblock %}

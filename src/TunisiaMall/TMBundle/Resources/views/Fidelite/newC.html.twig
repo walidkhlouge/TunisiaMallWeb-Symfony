@@ -1,0 +1,78 @@
+
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+
+
+{% block content %}
+ <div class="side-body padding-top">
+    <h3  class="text-success">Ajouter Carte </h3>
+<form action="{{ path('carte_add') }}" method="post" {{ form_enctype(form) }}
+      class="form-horizontal" role="form" enctype="multipart/form-data">
+    {{ form_errors(form) }}
+
+     
+        <div class="form-group">
+        <label for="description" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.reductionfixe ,"Reduction Unitaire ") }}
+        </label>
+        <div class="col-sm-9" class="form-control">
+            {{ form_widget(form.reductionfixe) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.reductionfixe) }}
+        </div>
+
+        </div>  
+        
+        <div class="form-group">
+        <label for="description" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.pointfidelefixe ,"Points Unitaire") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.pointfidelefixe) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.pointfidelefixe) }}
+        </div>
+        </div>
+        
+         <div class="form-group">
+        <label for="description" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.loginclient ,"Client") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.loginclient) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.loginclient) }}
+        </div>
+
+    </div>  
+         <div class="form-group">
+        <label for="description" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.nomenseigne ,"Enseigne") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.nomenseigne) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.nomenseigne) }}
+        </div>
+
+    </div>  
+    
+        <div align="center" >
+         {{ form_rest(form) }}
+        </div>
+        </form>
+    
+
+ </div>
+   {% endblock %}
+
+{% block footer %} 
+    
+    
+  {{ parent() }}
+   
+
+{% endblock %}{# empty Twig template #}

@@ -1,0 +1,29 @@
+{% extends 'TunisiaMallTMBundle:resBoutView:AfficherProfil.html.twig' %}
+{% block content %}
+   
+    <div class="well">
+            <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row">
+                          <div class="content">
+  
+      
+          <div id="div">
+          <h2 class="modal-title" id="n">Compte -Responsable Boutique</h2>   
+   
+        <h2>Modifier produit</h2>
+       <form method="post"> 
+ <table class="datatable table table-striped" cellspacing="0" width="50%">
+     <tr> <td>Prix de vente unitaire :</td></tr>
+     <td> {{form_widget(f.prixventeunitaire)}}</td>
+     <tr><td>Taux de reduction :</td><tr>
+     <td> {{form_widget(f.tauxreduction)}}</td>
+       <tr><td>{{form_rest(f)}} </td></tr>
+</table>
+  </form>
+          </div>    </div>
+                    </div>
+                </div>
+{% endblock %}
+
+

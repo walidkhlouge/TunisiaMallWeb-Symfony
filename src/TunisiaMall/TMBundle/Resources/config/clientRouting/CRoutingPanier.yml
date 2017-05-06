@@ -1,0 +1,16 @@
+#client_panier:
+#    path:     /client_panier{idProduit}/{nombre}
+#    defaults: { _controller: TunisiaMallTMBundle:clientController/CPanier:index }
+#    
+client_panier:
+    path:     /client_panier
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CPanier:panier }
+client_ajoutPanier:
+    path:     /client_ajoutPanier/{id}
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CPanier:ajoutPanier }
+client_modifPanier:
+    path:     /client_modifPanier/{id}/{taille}
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CPanier:modifPanier }
+client_supprimerPanier:
+    path:     /client_supprimerPanier/{id}/{taille}
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CPanier:supprimerPanier }

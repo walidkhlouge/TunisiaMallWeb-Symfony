@@ -1,0 +1,24 @@
+boutique_afficher_produit:
+    path:     /bproduit/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BProduit:afficherproduit }
+
+boutique_supprimer_produit:
+    path:     /deletep
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BProduit:supprimerproduit }  
+    
+enseigne_afficher_produit:
+    path:   /affichp/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BProduit:enafficherproduit }
+supprimer_produit:
+    path:    /supprimer/{id}/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BProduit:delete }
+modifier_produit:
+    path:    /update/{id}/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BProduit:updateprod }
+ajouter_produit:
+    path:    /ajout/{id}/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BProduit:Ajouterprod }
+ajouter_taille_produit:
+    path:    /ajouttaille/{id}/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BProduit:Ajoutertaille }
+

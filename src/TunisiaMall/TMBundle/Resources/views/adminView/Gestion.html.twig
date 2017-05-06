@@ -1,0 +1,60 @@
+{% extends 'TunisiaMallTMBundle:adminView:AIndex.html.twig' %}
+{% block content %}
+    <h1>fdfsgf</h1>
+<table class="table table-hover">
+                                
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>
+                                            Login
+                                        </th>
+                                        <th>
+                                            Nom&Prenom
+                                        </th>
+                                        <th>
+                                            Adresse Mail
+                                        </th>
+                                        <th>
+                                            Role
+                                        </th>
+                                        <th>
+                                            Etat
+                                        </th>
+                                        <th>
+                                            Actions
+                                        </th>
+                                    </tr>
+                               
+                              
+
+                                    {% for utilisateur in listeComptes %}
+                                        <tr>
+                                            <td></td>
+                                             <td></td>
+                                             <td></td>
+                                            <td>{{ utilisateur.login }}</td>
+                                            <td>{{ utilisateur.nom }} {{ utilisateur.prenom }}</td>
+                                            <td>{{ utilisateur.adresseMail }}</td>
+                                            <td>{{ utilisateur.type }}</td>
+                                            <td>{{ utilisateur.etat }}</td>
+                                            <td>
+                                                       <form method="POST" action="{{ path('admin_modif', { 'login' : utilisateur.login }) }}">
+                                                    <select name="chercher" class="selectpicker" data-live-search="true" onChange="this.form.submit()">
+                                                            <option disabled selected value> -- Choisir  Action  -- </option>
+                                                            <option data-tokens ="Supprimer">Supprimer</option>
+                                                            <option data-tokens ="Bloquer">Bloquer</option>
+                                                            <option data-tokens ="Debloquer">Debloquer</option>
+                                                    </select></form>
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                    {% endfor %}
+                                    
+                                    <div class="navigation">
+            <center> {{ knp_pagination_render(listeComptes) }}</center>
+        </div>
+  
+{% endblock %}

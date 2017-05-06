@@ -1,0 +1,9 @@
+boutique_Afficher_Profil:
+    path:     /compte/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BIndex:afficherprofil }
+boutique_details_Profil:
+    path:     /c/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BIndex:afficherdetails }
+boutique_Modifier_Profil:
+    path:     /modifier/{login}
+    defaults: { _controller: TunisiaMallTMBundle:resBoutController/BIndex:modifierprofil }

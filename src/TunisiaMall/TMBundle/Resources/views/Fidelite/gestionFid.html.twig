@@ -1,0 +1,57 @@
+
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+
+
+{% block content %}
+    <div class="side-body padding-top">
+    
+    
+    
+    <form method="POST" action="">   
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   
+                    <select name="search" class="selectpicker" data-live-search="true" onChange="this.form.submit()">
+                                <option disabled selected value> -- Recherche des Cartes ? -- </option>
+                        {% for i in modelesall %}
+                       <option data-tokens = " {{i.nomenseigne}}" >{{i.nomenseigne}}</option>
+  {%endfor %}
+                    </select></br></br></br>  
+                 </form>
+<table  class="table table-bordered table-striped table-hover table-condensed"  >
+    <tr>
+         <td>Id</td>
+         <td>Points</td>
+         <td>Login</td>
+         <td>Enseigne</td>
+         <td>Point fidelite Unitaire </td>
+         <td>Taux reduction Unitaire</td>
+         <td class="table-info">Actions</td>
+       
+    </tr>
+    
+    {% for i in modeles %}
+    <tr>
+        <th>{{i.idcartefidelite}}</th>
+        <th>{{i.pointfidele}}</th>
+        <th>{{i.loginclient}}</th>
+        <th>{{i.nomenseigne}}</th>
+        <th>{{i.pointfidelefixe}}</th>
+        <th>{{i.reductionfixe}}</th>
+        <th>  <a type="button" class="btn btn-info" class="fa fa-plus"  href="{{ path('carte_edit', { 'id':i.idcartefidelite })}}">Modifier</a> 
+          <a   class="btn btn-danger" class="fa fa-plus" href="{{ path('carte_delete', { 'id':i.idcartefidelite })}}">Supprimer</a>
+
+ </th>
+    </tr>
+    {% endfor %}
+   
+</table> 
+   <a type="button" class="btn btn-success" class="fa fa-plus"  href="{{ path('carte_ajout')}}">Ajouter</a> 
+   </div>
+    {% endblock %}
+
+{% block footer %} 
+    {{ parent() }}
+   
+
+{% endblock %}
+

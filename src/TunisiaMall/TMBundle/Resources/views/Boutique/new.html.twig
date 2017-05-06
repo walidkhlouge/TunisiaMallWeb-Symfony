@@ -1,0 +1,83 @@
+
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+
+
+{% block content %}
+ <div class="side-body padding-top">
+          <h3  class="text-success">Ajouter Boutique </h3>
+<form action="{{ path('boutique_create') }}" method="post" {{ form_enctype(form) }}
+      class="form-horizontal" role="form" enctype="multipart/form-data" >
+    {{ form_errors(form) }}
+
+   
+    
+     <div class="form-group">
+         
+        <label for="nom" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.intitule ,"Intitule") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.intitule) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.intitule) }}
+        </div>
+
+    </div>
+        
+        <div class="form-group">
+        <label for="description" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.nomenseigne ,"Nom Enseigne") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.nomenseigne) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.nomenseigne) }}
+        </div>
+
+        </div>  
+        
+        <div class="form-group">
+        <label for="description" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.loginresponsableboutique ,"Responsable Boutique") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.loginresponsableboutique) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.loginresponsableboutique) }}
+        </div>
+
+         </div>  
+        <div class="form-group">
+        <label for="description" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.file ," Boutique") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.file) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.file) }}
+        </div>
+
+         </div>  
+      
+   
+        {{ form_rest(form) }}
+        
+        
+        </form>
+    
+
+ </div>
+   {% endblock %}
+
+{% block footer %} 
+    
+    
+  {{ parent() }}
+   
+
+{% endblock %}

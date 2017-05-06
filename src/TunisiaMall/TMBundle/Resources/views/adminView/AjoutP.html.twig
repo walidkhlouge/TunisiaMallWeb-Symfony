@@ -1,0 +1,42 @@
+{% extends 'TunisiaMallTMBundle:adminView:AIndex.html.twig' %}
+{% block content %}
+    <h1>fdfsgf</h1>
+   <form action="" method="post" >
+
+       <table class="table table-hover">
+           <tr>
+               <td>aaaa</td>
+                                             <td></td>
+                                             <td></td>
+               <td>Prix: </td>
+               <td> {{form_widget(f.prix)}}</td>
+           </tr>
+           <tr></tr>
+            <tr>
+                <td>aaaa</td>
+                                             <td></td>
+                                             <td></td>
+           <td>Description: </td>
+               <td> {{form_widget(f.description)}}</td>
+          
+           </tr>
+           <tr></tr>
+           <tr>
+               <td>aaaa</td>
+                                             <td></td>
+                                             <td></td>
+           <td>Nom: </td>
+               <td> {{form_widget(f.nom)}}</td>
+          
+           </tr>
+           <tr>
+               <td>aaaa</td>
+                                             <td></td>
+                                             <td></td>
+                                             <td>{{form_rest(f)}}</td>
+           
+    </table>
+
+</form>
+    
+{% endblock %}    

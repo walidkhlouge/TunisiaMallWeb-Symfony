@@ -1,0 +1,64 @@
+
+{% extends 'TunisiaMallTMBundle:resBoutView:AfficherProfil.html.twig' %}
+{% block content %}
+ 
+       <div class="container-fluid">
+                <div class="side-body padding-top">
+                    <div class="row">
+                          <div class="content">
+  
+      
+          <div id="div">
+          <h1 id="n">Compte -Responsable Boutique</h1>    
+                <h2>Produits boutique</h2>
+             <legend></legend>
+    
+ <div class="card">
+    <table class="datatable table table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+               
+                <th>Nom              </th>
+                <th>Prix de vente unitaire</th>
+                <th>Taux de reduction    </th>
+                <th>Reference        </th>
+                <th>Info             </th>
+                <th>Photo            </th>
+                <th>IdBoutique            </th>
+                <th>Actions          </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+               
+            <tr>
+                
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.prixventeunitaire }}</td>
+                <td>{{ entity.tauxreduction }}</td>
+                <td>{{ entity.reference }}</td>
+                <td>{{ entity.info }}</td>
+                <td> <img src="{{asset('gui/boutique/'~entity.url)}}" id="imgProd"</td>
+                <td>{{ entity.idboutique.idboutique}}</td>
+                <td> {% for a in comptes %}
+                     <ul>
+                         <a href="{{ path('supprimer_produit', { 'id': entity.idproduit,'login': a.login }) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                     </ul>    
+                     <ul>
+                  <a href="{{ path('modifier_produit', { 'id': entity.idproduit,'login': a.login }) }}">  <button type="button"  class="btn btn-info">Modifier</button></a>
+                     </ul>
+                </td>
+            </tr>
+        {% endfor %}
+          {% endfor %}
+        </tbody>
+    </table>
+    </div>
+         </div>
+         </div>
+         </div>
+         </div>
+         </div>
+    {% endblock %}
+
+  

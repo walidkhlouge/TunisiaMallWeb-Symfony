@@ -1,0 +1,6 @@
+client_produit:
+    path:     /client_produit
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CProduit:index }
+client_produitByBout:
+    path:     /client_produit{idBoutique}
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CProduit:indexByBout }

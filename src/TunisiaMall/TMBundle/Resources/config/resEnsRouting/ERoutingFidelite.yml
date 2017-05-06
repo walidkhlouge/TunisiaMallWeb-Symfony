@@ -1,0 +1,45 @@
+## YAML Template.
+---
+enseigne_enseigne:
+    path:     /enseigne_enseigne
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/EEnseigne:index }
+enseigne_boutique:
+    path:     /boutique
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Boutique:index}
+    
+enseigne_fid:
+    path:     /fidelite
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Fidelite:index }  
+    
+     
+    
+    
+carte_edit:
+    path:     fideliteE/{id}
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Fidelite:edit }
+    
+    
+carte_update:
+    path:     /fideliteU/{id}
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Fidelite:update }
+    
+
+
+carte_delete:
+    path:     fideliteD/{id}
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Fidelite:delete }
+    
+carte_ajout:
+    path:     fideliteAj
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Fidelite:new } 
+    
+carte_add:
+    path:     fideliteAd
+    defaults: { _controller: TunisiaMallTMBundle:resEnsController/Fidelite:create }   
+    
+    
+   
+  
+    
+    
+    

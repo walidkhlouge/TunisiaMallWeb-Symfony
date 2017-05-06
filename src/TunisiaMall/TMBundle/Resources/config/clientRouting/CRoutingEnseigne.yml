@@ -1,0 +1,6 @@
+client_enseigne:
+    path:     /client_enseigne
+    defaults: { _controller: TunisiaMallTMBundle:clientController/CEnseigne:index }
+google_map:
+    path:     /map
+    defaults: { _controller: TunisiaMallTMBundle:clientController/Map:index }

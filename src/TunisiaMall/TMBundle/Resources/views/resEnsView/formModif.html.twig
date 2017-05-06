@@ -1,0 +1,59 @@
+{% extends "TunisiaMallTMBundle::resEnsView/EIndex.html.twig" %}
+{% block content %}
+    <div class="side-body padding-bottom">
+        <div class="col-md-12 col-md-offset-0">
+                <form method="post" {{ form_enctype(f) }}>
+                    <div class ="modal-body">
+                        <div class="container-fluid">
+                            <section class="container">
+                                <div class="container-page">
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12" id ="username">
+                                            <label>Nom d'enseigne</label>                      
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                                    {{form_widget(f.nomenseigne)}}
+                                            </div>
+                                            <div class="help-block with-errors"></div>
+                                            <small id="output_checkuser"></small>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label>Adresse</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                                                    {{form_widget(f.adresse)}}
+                                            </div>
+                                            <div class="help-block with-errors "></div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label>Description</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
+                                                    {{form_widget(f.info)}}
+                                            </div>
+                                            <div class="help-block with-errors "></div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Image</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
+                                                    {{form_widget(f.file)}}
+                                            </div>
+                                            <div class="help-block with-errors "></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class = "modal-footer">
+                                <a class ="btn btn-default" href="{{path ('affichage_page')}}">Annuler</a>
+                                <div class ="btn btn-default">{{form_rest(f)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+
+{% endblock %}
